@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include ".\..\algo\includes\seidel_method.h"
+#include "./../algo/includes/seidel_method.h"
 
 int main() {
     size_t n = 3;

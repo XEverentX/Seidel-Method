@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "./../includes/seidel_method.h"
 
 double vectorNorm(const std::vector<double> &v) {
@@ -5,7 +7,7 @@ double vectorNorm(const std::vector<double> &v) {
     for (auto x : v) {
         result += x * x;
     }
-    return sqrt(result);
+    return std::sqrt(result);
 }
 
 std::vector<double> solveSequentialSeidel(std::vector<std::vector<double>> &a,
@@ -31,7 +33,7 @@ std::vector<double> solveSequentialSeidel(std::vector<std::vector<double>> &a,
             oldX[i] = x[i];
             x[i] = currentSum / a[i][i];
         }
-    } while (fabs(vectorNorm(x) - vectorNorm(oldX)) >= eps && approximationsCount--);
+    } while (std::fabs(vectorNorm(x) - vectorNorm(oldX)) >= eps && approximationsCount--);
 
     return x;
 }
