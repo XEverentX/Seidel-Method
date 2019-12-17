@@ -24,5 +24,4 @@ script:
   - cd build
   - cmake .. 
   - cmake --build . --config RELEASE
-  - cd application
-  - source seidel
+  - cd ..
