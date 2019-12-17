@@ -11,7 +11,7 @@ cmake --build . --config RELEASE
 ```
 To run under `linux` use:
 ```bash
-./application/Release/seidel
+./application/seidel
 ```
 
 To run under `windows` use:
@@ -20,9 +20,9 @@ To run under `windows` use:
 ```
 ## Seidel Method
 In case of this method you can solve System of equtions like Ax=b, there:  
-    * A - is a coeficent's matrix:  
-    * x - is a unknown members column  
-    * b - is acolumn of the free members  
+    - A - is a coeficent's matrix:  
+    - x - is a unknown members column  
+    - b - is acolumn of the free members  
 ## Current task
 ```
 Δu = - sin(pi*x*y)^2  
