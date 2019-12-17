@@ -18,7 +18,7 @@ int main() {
     bool bad = false;
 
     std::vector<double> expectedVector(n, 1.);
-    auto result = solveSequentialSeidel(a, b);
+    auto result = solveSeidel(a, b);
     for (size_t i = 0; i < n; i++) {
         if (abs(expectedVector[i] - result[i]) >= eps) bad = true;
     }

@@ -7,16 +7,16 @@ To build application simply follow a few steps:
 mkdir build
 cd build
 cmake ..
-cmake --build .
+cmake --build . --config RELEASE
 ```
 To run under `linux` use:
 ```bash
-./application/seidel
+./application/Release/seidel
 ```
 
 To run under `windows` use:
 ```bash
-.\application\seidel.exe
+.\application\Release\seidel.exe
 ```
 ## Seidel Method
 In case of this method you can solve System of equtions like Ax=b, there:  
