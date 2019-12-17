@@ -10,23 +10,24 @@ double vectorNorm(const std::vector<double> &v) {
     return std::sqrt(result);
 }
 
-std::vector<double> solveSequentialSeidel(std::vector<std::vector<double>> &a,
-                                          std::vector<double> &b,
-                                          double eps,
-                                          int approximationsCount) {
-    size_t              n = b.size();
+std::vector<double> solveSeidel(std::vector<std::vector<double>> &a,
+                                std::vector<double> &b,
+                                double eps,
+                                int approximationsCount) {
+    int n = static_cast<int>(b.size());
+
     std::vector<double> x(n);
     std::vector<double> oldX(n, 0);
 
     do {
-        for (size_t i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             double currentSum = b[i];
 
-            for (size_t j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++) {
                 currentSum -= a[i][j] * x[j];
             }
 
-            for (size_t j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 currentSum -= a[i][j] * x[j];
             }
 
