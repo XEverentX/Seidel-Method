@@ -11,7 +11,7 @@ cmake --build . --config RELEASE
 ```
 To run under `linux` use:
 ```bash
-./application/Release/seidel
+./application/seidel
 ```
 
 To run under `windows` use:
@@ -32,7 +32,6 @@ $$u(-1, y) = \mu_1(y) = -y^2, u(1, y) = \mu_2(y) = -y^2$$
 $$u(x, -1) = \mu_3(x) = -x^2, u(x, 1) = \mu_4(x) = -x^2$$
 $$\Delta u = -4$$
 ---
-
 ### Table of value of chain function
 | | y0 | y1 | y2 | y3 | y4 |
 |:---:|:---:|:---:|:---:|:---:|:---:|
