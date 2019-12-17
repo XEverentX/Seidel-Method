@@ -3,29 +3,14 @@ language: cpp
 matrix:
   include:
     - os: linux
-      dist: xenial
-      addons:
-        apt:
-          sources: ubuntu-toolchain-r-test
-          packages: g++-5
-      env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-      before_script:
-
-    - os: linux
       dist: bionic
       addons:
         apt:
           sources: ubuntu-toolchain-r-test
-          packages: g++-8
-      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8
-
-    - os: linux
-      dist: xenial
-      compiler: clang
-      addons:
-        apt:
-          packages: clang-5.0
-      env: MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+          packages:
+            - gcc-7 
+            - g++-7
+      env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7
 
     - os: linux
       dist: xenial
@@ -35,9 +20,9 @@ before_install:
 - eval "${MATRIX_EVAL}"
 
 script:
-- mkdir build
-- cd build
-- cmake ..
-- cmake --build . --config RELEASE
-- cd ..
-- source build/application/seidel
+  - mkdir build
+  - cd build
+  - cmake .. 
+  - cmake --build . --config RELEASE
+  - ./application/seidel
+  - cd ..

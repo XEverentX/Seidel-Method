@@ -1,3 +1,5 @@
+![Build status](https://travis-ci.org/XEverentX/Seidel-Method.svg?branch=master)
+
 # Dirichlet task for Puasson's equation with Seidel method
 ## Build && Run
 To build application simply follow a few steps:
@@ -9,7 +11,7 @@ cmake --build .
 ```
 To run under `linux` use:
 ```bash
-./application/seidel.exe
+./application/seidel
 ```
 
 To run under `windows` use:
@@ -23,7 +25,7 @@ In case of this method you can solve System of equtions like Ax=b, there:
     * b - is acolumn of the free members  
 ## Current task
 ```
-du = - sin(pi*x*y)^2  
+Δu = - sin(pi*x*y)^2  
 x, y э (0,1)  
 u(0,y) = sin(pi*y)   u(1,y) = sin(pi*y)  
 u(x,0) = x - x^2    u(x,0) = x - x^2  
