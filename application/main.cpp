@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #include "./../algo/includes/seidel_method.h"
 
@@ -20,7 +21,7 @@ int main() {
     std::vector<double> expectedVector(n, 1.);
     auto result = solveSeidel(a, b);
     for (size_t i = 0; i < n; i++) {
-        if (abs(expectedVector[i] - result[i]) >= eps) bad = true;
+        if (std::fabs(expectedVector[i] - result[i]) >= eps) bad = true;
     }
     std::cout << (bad ? "Problems there" : "It's Okay") << std::endl;
 }
