@@ -1,27 +1,77 @@
 #include <iostream>
 #include <cmath>
 
-#include "./../algo/includes/seidel_method.h"
+#include "./../algo/includes/difference_scheme.hpp"
 
 int main() {
-    size_t n = 3;
+    int n = 4;
+    int m = 4;
 
-    std::vector<std::vector<double>> a(n, std::vector<double>(n));
+    int a = -1;
+    int b = 1;
+    int c = -1;
+    int d = 1;
 
-    a[0][0] = 10; a[0][1] = 1; a[0][2] = 1;
-    a[1][0] = 2; a[1][1] = 10; a[1][2] = 1;
-    a[2][0] = 2; a[2][1] = 2; a[2][2] = 10;
+    auto u = [] (double x, double y) -> double {
+        return 1 - sqr(x) - sqr(y);
+    };
 
-    std::vector<double> b(n);
-    b[0] = 12; b[1] = 13; b[2] = 14;
+    std::function<double(double)> mu[5];
 
-    double eps = 0.00001;
-    bool bad = false;
+    mu[1] = [] (double y) -> double {
+        return -sqr(y);
+    };
 
-    std::vector<double> expectedVector(n, 1.);
-    auto result = solveSeidel(a, b);
-    for (size_t i = 0; i < n; i++) {
-        if (std::fabs(expectedVector[i] - result[i]) >= eps) bad = true;
-    }
-    std::cout << (bad ? "Problems there" : "It's Okay") << std::endl;
+    mu[2] = [] (double y) -> double {
+        return -sqr(y);
+    };
+
+    mu[3] = [] (double x) -> double {
+        return -sqr(x);
+    };
+
+    mu[4] = [] (double x) -> double {
+        return -sqr(x);
+    };
+
+    auto f = [] (double x, double y) -> double {
+        return 4.;    
+    };
+
+    auto v = solveDifferenceScheme(f, mu, a, b, c, d, n, m);
+
+    // Printing of chain function
+    auto printMatrix = [&] () -> void {
+        for (int i = 0; i < n + 1; i++) {
+            for (int j = 0; j < m + 1; j++) {
+                std::cout << v[i][j] << ' ';
+            }
+            std::cout << "\n";
+        }    
+    };
+
+    auto printMatrixInMarkDown = [&] () -> void {
+        std::cout << "| |";
+        for (int i = 0; i < m + 1; i++) {
+            std::cout << " y" << i << " |";
+        }
+        std::cout << "\n";
+
+        for (int i = 0; i <= m + 1; i++) {
+            std::cout << "|:---:";
+        }
+        std::cout << "|\n";
+
+        for (int i = 0; i < n + 1; i++) {
+            std::cout << "| x" << i;
+            for (int j = 0; j < m + 1; j++) {
+                std::cout << "| " << v[i][j] << " ";
+            }
+            std::cout << "|\n";
+        }    
+    };
+
+    printMatrixInMarkDown();
+    
+    return 0;
 }

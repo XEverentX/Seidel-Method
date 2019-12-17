@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include "./../includes/seidel_method.h"
+#include "./../includes/seidel_method.hpp"
 
 double vectorNorm(const std::vector<double> &v) {
     double result = 0.0;
