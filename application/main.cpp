@@ -1,16 +1,23 @@
+#include <cstdio>
 #include <iostream>
+#include <iomanip>
 #include <cmath>
+#include <string>
 
 #include "./../algo/includes/difference_scheme.hpp"
+#include "./../algo/includes/utils.hpp"
 
-int main() {
-    int n = 4;
-    int m = 4;
+int main(int argc, char** argv) {
+    int    n                     = 4;
+    int    m                     = 4;
+    int    maxApproximationCount = 100000;
+    double a                     = -1;
+    double b                     = 1;
+    double c                     = -1;
+    double d                     = 1;
+    double eps                   = 0.0000001;    
 
-    int a = -1;
-    int b = 1;
-    int c = -1;
-    int d = 1;
+    init(argc, argv, a, b, c, d, n, m, eps, maxApproximationCount);    
 
     auto u = [] (double x, double y) -> double {
         return 1 - sqr(x) - sqr(y);
@@ -38,40 +45,9 @@ int main() {
         return 4.;    
     };
 
-    auto v = solveDifferenceScheme(f, mu, a, b, c, d, n, m);
+    auto v = solveDifferenceScheme(f, mu, a, b, c, d, n, m, eps, maxApproximationCount);
 
-    // Printing of chain function
-    auto printMatrix = [&] () -> void {
-        for (int i = 0; i < n + 1; i++) {
-            for (int j = 0; j < m + 1; j++) {
-                std::cout << v[i][j] << ' ';
-            }
-            std::cout << "\n";
-        }    
-    };
-
-    auto printMatrixInMarkDown = [&] () -> void {
-        std::cout << "| |";
-        for (int i = 0; i < m + 1; i++) {
-            std::cout << " y" << i << " |";
-        }
-        std::cout << "\n";
-
-        for (int i = 0; i <= m + 1; i++) {
-            std::cout << "|:---:";
-        }
-        std::cout << "|\n";
-
-        for (int i = 0; i < n + 1; i++) {
-            std::cout << "| x" << i;
-            for (int j = 0; j < m + 1; j++) {
-                std::cout << "| " << v[i][j] << " ";
-            }
-            std::cout << "|\n";
-        }    
-    };
-
-    printMatrixInMarkDown();
+    printMatrixInMarkDown(v);
     
     return 0;
 }

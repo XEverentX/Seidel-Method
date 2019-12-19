@@ -62,7 +62,9 @@ std::vector<std::vector<double>> solveDifferenceScheme(std::function<double(doub
         counter++;
     } while(maxEps >= eps && counter < maxCountApproximation);
 
-    std::cerr << counter << std::endl;
+    std::cout << "\nResults:\n";
+    std::cout << "NumOfApproximations: " << counter << std::endl;
+    std::cout << "Result epsilon: " << maxEps << std::endl;
     return v;
 }
 
