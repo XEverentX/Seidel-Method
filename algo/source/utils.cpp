@@ -100,3 +100,13 @@ void printMatrixInMarkDown(const std::vector<std::vector<double>> &v) {
         std::cout << "|\n";
     }    
 }
+
+std::vector<double> matrixToVector(std::vector<std::vector<double>> v) {
+    std::vector<double> result;
+    for (auto& x : v) {
+        for (auto& y : x) {
+            result.push_back(y);
+        }
+    }
+    return result;
+}

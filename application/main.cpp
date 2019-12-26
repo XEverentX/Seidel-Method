@@ -45,9 +45,11 @@ int main(int argc, char** argv) {
         return 4.;    
     };
 
-    auto v = solveDifferenceScheme(f, mu, a, b, c, d, n, m, eps, maxApproximationCount);
+    auto res = solveDifferenceScheme(f, mu, a, b, c, d, n, m, eps, maxApproximationCount);
+    res.setInaccuracy(getUMatrix(u, a, b, c, d, n, m));
+    res.setDiscrepancy(getUMatrix(f, a, b, c, d, n, m), getUMatrix(u, a, b, c, d, n, m), (b - a) / n, (d - c) / m);
 
-    printMatrixInMarkDown(v);
-    
+    res.output();
+
     return 0;
 }
